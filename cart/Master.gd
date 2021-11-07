@@ -46,10 +46,16 @@ func _physics_process(delta):
 #	print($GolfCart.get_global_transform().origin.y)
 	
 	if Input.is_action_just_pressed("jump") and $GolfCart.get_global_transform().origin.y <= 1.2:
-		$GolfCart.apply_central_impulse(Vector3(0.0, 400.0, 1.0))
+		$GolfCart.apply_central_impulse(Vector3(0.0, 450.0, 1.0))
 		$BounceEffect.transform.origin = Vector3($GolfCart.transform.origin.x, 0.17, $GolfCart.transform.origin.z)
 		bounce_time = time
-		
+	
+	var orientation: Vector3 = $GolfCart.transform.basis.y
+	var correction = orientation.cross(Vector3(0.0, 1.0, 0.0))
+	
+	$GolfCart.add_torque(correction * 1000.0)
+	$GolfCart.angular_damp = 0.2
+	
 #	print($GolfCart.engine_force)
 	
 #	$GolfCart.engine_force = 0.0
