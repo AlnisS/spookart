@@ -187,3 +187,19 @@ suspension_stiffness = 20.0
 transform = Transform( -1.31134e-09, 0, 0.03, 0, 0.03, 0, -0.03, 0, -1.31134e-09, 0.0019232, -0.00396726, -0.0211993 )
 mesh = SubResource( 4 )
 material/0 = null
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.250389, -0.19398, 0.948513, -0.0655201, 0.974081, 0.216504, -0.965926, -0.116357, 0.231189, -1.7654, 0.320888, -0.538813 )
+light_energy = 3.0
+light_bake_mode = 0
+shadow_enabled = true
+spot_range = 13.945
+spot_angle = 22.3931
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( -0.250389, -0.19398, 0.948513, 0.0655201, 0.974081, 0.216504, -0.965926, 0.116357, -0.231189, -1.76583, 0.321058, 0.539 )
+light_energy = 3.0
+light_bake_mode = 0
+shadow_enabled = true
+spot_range = 13.945
+spot_angle = 22.7812
