@@ -13,33 +13,33 @@ func _ready():
 var time = 0.0
 
 var bounce_time = -100.0
-var bounce_scale = 1.0
+var bounce_scale = 0.5
 
 func _physics_process(delta):
 	time += delta
 	
 	var bounce_progress = (time - bounce_time) / bounce_scale
 	
-	$BounceEffect/BounceOuter.radius = bounce_progress * 6
-	$BounceEffect/BounceInner.radius = bounce_progress * 6 - 0.2
-	$BounceEffect.material_override.albedo_color = Color(1.0, 1.0, 1.0, 1.0 - bounce_progress)
+	$BounceEffect/BounceOuter.radius = bounce_progress * 8
+	$BounceEffect/BounceInner.radius = bounce_progress * 8 - 0.2
+	$BounceEffect.material_override.albedo_color = Color(1.0, 1.0, 1.0, pow(1.0 - bounce_progress, 3))
 	
 	$PlayerCamera.transform = $PlayerCamera.transform.interpolate_with($GolfCart/TargetCamera.get_global_transform(), 0.2)
 	var steer_target = 0.0
 	if Input.is_action_pressed("steer_left"):
-		steer_target += 0.5
+		steer_target += 0.6
 	if Input.is_action_pressed("steer_right"):
-		steer_target -= 0.5
+		steer_target -= 0.6
 	$GolfCart.steering = lerp($GolfCart.steering, steer_target, 0.1)
 	
 	if Input.is_action_pressed("gas"):
-		$GolfCart.engine_force = 100.0
+		$GolfCart.engine_force = 150.0
 	else:
 		$GolfCart.engine_force = 0.0
 	
 	if Input.is_action_pressed("brake"):
 		$GolfCart.brake = 1.0
-		$GolfCart.engine_force = -100.0
+		$GolfCart.engine_force = -150.0
 	else:
 		$GolfCart.brake = 0.0
 	

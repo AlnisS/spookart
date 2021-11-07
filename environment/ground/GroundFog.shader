@@ -14,6 +14,8 @@ void vertex() {
 void fragment() {
 // Output:0
 	vec4 world_vertex = CAMERA_MATRIX * vec4(VERTEX, 1.0);
+	world_vertex.x += TIME * 0.5;
+	world_vertex.z += TIME * 0.1;
 	float noiseValue = texture(NOISE_PATTERN, world_vertex.zx * 0.05 * SCALE).x;
 	ALBEDO = vec3(noiseValue);
 	ALPHA = texture(NOISE_PATTERN, world_vertex.xz * 0.1).x * INTENSITY;

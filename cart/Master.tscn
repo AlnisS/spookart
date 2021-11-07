@@ -67,6 +67,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -8 )
 width = 6.0
 
+[node name="CSGBox5" type="CSGBox" parent="Ground"]
+transform = Transform( 0.976792, 0.21419, 0, -0.213195, 0.972254, -0.0962801, -0.0206222, 0.0940456, 0.995354, 2.86249, 0.431114, 8.42174 )
+width = 6.0
+depth = 8.00101
+
 [node name="GolfCart" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594811, 0 )
 
@@ -109,3 +114,15 @@ transform = Transform( 0.996074, 0, -0.0885292, 0, 1, 0, 0.0885292, 0, 0.996074,
 
 [node name="Fence3" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -12.3271, 0, -4.48978 )
+
+[node name="Fence4" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -20.9189, 4.76837e-07, -3.74715 )
+
+[node name="Fence5" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -22.2504, 4.76837e-07, 1.14836 )
+
+[node name="Fence6" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -23.4844, 4.76837e-07, 5.80243 )
+
+[node name="Fence7" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -19.8426, 4.76837e-07, -9.72522 )

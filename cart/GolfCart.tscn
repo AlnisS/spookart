@@ -119,7 +119,7 @@ surfaces/0 = {
 steering = 0.3
 
 [node name="Chassis" type="MeshInstance" parent="."]
-transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, -0.6, 0 )
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.5, -0.6, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -143,27 +143,26 @@ mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123887, 1.00743, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376113, 1.00743, 0 )
 shape = SubResource( 9 )
 
 [node name="WheelBL" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.364, -0.3, 0.8 )
-use_as_traction = true
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.864, -0.3, 0.8 )
 wheel_radius = 0.35
-wheel_friction_slip = 2.0
+wheel_friction_slip = 1.95
 suspension_travel = 2.0
 suspension_stiffness = 20.0
 
 [node name="WheelBR" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.364, -0.3, -0.8 )
-use_as_traction = true
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.864, -0.3, -0.8 )
 wheel_radius = 0.35
-wheel_friction_slip = 2.0
+wheel_friction_slip = 1.95
 suspension_travel = 2.0
 suspension_stiffness = 20.0
 
 [node name="WheelFR" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.32823, -0.3, -0.8 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.82823, -0.4, -0.8 )
+use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.35
 wheel_friction_slip = 4.0
@@ -176,7 +175,8 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="WheelFL" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.328, -0.3, 0.8 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.828, -0.4, 0.8 )
+use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.35
 wheel_friction_slip = 4.0
@@ -189,7 +189,7 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.250389, -0.19398, 0.948513, -0.0655201, 0.974081, 0.216504, -0.965926, -0.116357, 0.231189, -1.7654, 0.320888, -0.538813 )
+transform = Transform( 0.250389, -0.19398, 0.948513, -0.0655201, 0.974081, 0.216504, -0.965926, -0.116357, 0.231189, -2.2654, 0.320888, -0.538813 )
 light_energy = 3.0
 light_bake_mode = 0
 shadow_enabled = true
@@ -197,7 +197,7 @@ spot_range = 13.945
 spot_angle = 22.3931
 
 [node name="SpotLight2" type="SpotLight" parent="."]
-transform = Transform( -0.250389, -0.19398, 0.948513, 0.0655201, 0.974081, 0.216504, -0.965926, 0.116357, -0.231189, -1.76583, 0.321058, 0.539 )
+transform = Transform( -0.250389, -0.19398, 0.948513, 0.0655201, 0.974081, 0.216504, -0.965926, 0.116357, -0.231189, -2.26583, 0.321058, 0.539 )
 light_energy = 3.0
 light_bake_mode = 0
 shadow_enabled = true
