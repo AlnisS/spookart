@@ -101,7 +101,14 @@ func _physics_process(delta):
 	
 	if balls < time / 10.0:
 		balls += 1
-		$BallSpawner.add_child(golf_ball_scene.instance())
+		var new_golf_ball = golf_ball_scene.instance()
+		$BallSpawner.add_child(new_golf_ball)
+		var location = $GolfCart.get_global_transform().origin
+		location.y = 0
+		location = location.normalized() * 50
+#		var angle = rand_range(0, 2 * PI)
+#		var location = Vector3(50 * cos(angle), 0, 50 * sin(angle))
+		new_golf_ball.transform.origin = location
 		$BallAlarm.playing = true
 	
 	for golf_ball in $BallSpawner.get_children():
@@ -145,4 +152,5 @@ func _on_PlayButton_play():
 	$ChargeBar.show()
 	$ChargeLabel.show()
 	$PlayButton.hide()
+	$GameTitleLabel.hide()
 	get_tree().paused = false
