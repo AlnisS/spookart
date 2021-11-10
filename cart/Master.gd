@@ -24,14 +24,18 @@ func _physics_process(delta):
 	$BounceEffect/BounceInner.radius = bounce_progress * 12 - 0.4
 	$BounceEffect.material_override.albedo_color = Color(1.0, 1.0, 1.0, pow(1.0 - bounce_progress, 3))
 	
-	var view_displacement = $PlayerCamera.transform.origin - $GolfCart/TargetCamera.get_global_transform().origin
+	var target_camera = $GolfCart/TargetCamera
+	if Input.is_action_pressed("camera_2"):
+		target_camera = $GolfCart/TargetCamera2
+	
+	var view_displacement = $PlayerCamera.transform.origin - target_camera.get_global_transform().origin
 	var view_distance = view_displacement.length()
 	var extra_lerp = clamp((view_distance - 0.3) * 3, 0.0, 0.7)
-#	var extra_lerp = 0.2
-#	print(extra_lerp)
-#	print(view_distance)
+	if Input.is_action_pressed("camera_2"):
+		extra_lerp = 0.0
+
 	
-	var target_transform = $GolfCart/TargetCamera.get_global_transform()
+	var target_transform = target_camera.get_global_transform()
 	if Input.is_action_pressed("peek"):
 		target_transform.basis = target_transform.basis.rotated($GolfCart.transform.basis.y, PI * -7/8)
 	
@@ -60,7 +64,8 @@ func _physics_process(delta):
 	
 #	if Input.is_action_just_pressed("jump") and $GolfCart.get_global_transform().origin.y <= 1.2:
 	if Input.is_action_just_pressed("jump"):
-		$GolfCart.apply_central_impulse(Vector3(0.0, 450.0, 1.0))
+#		$GolfCart.apply_central_impulse(Vector3(0.0, 450.0, 1.0))
+		$GolfCart.apply_central_impulse($GolfCart.transform.basis.y * 450)
 #		$BounceEffect.transform.origin = Vector3($GolfCart.transform.origin.x, 0.17, $GolfCart.transform.origin.z)
 		$BounceEffect.transform.origin = $GolfCart.transform.origin - Vector3(0, 0, 0)
 		bounce_time = time
