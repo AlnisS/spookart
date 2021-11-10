@@ -5,6 +5,8 @@ extends Spatial
 # var a = 2
 # var b = "text"
 
+var golf_ball_scene = preload("res://ball/GolfBall.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,6 +16,8 @@ var time = 0.0
 
 var bounce_time = -100.0
 var bounce_scale = 0.5
+
+var balls = 1
 
 func _physics_process(delta):
 	time += delta
@@ -76,21 +80,24 @@ func _physics_process(delta):
 	$GolfCart.add_torque(correction * 1000.0)
 	$GolfCart.angular_damp = 0.2
 	
+	if balls < time / 10.0:
+		balls += 1
+		print("add ball")
+		$BallSpawner.add_child(golf_ball_scene.instance())
+		$BallAlarm.playing = true
 	
-	var golf_ball_direction = $GolfCart.get_global_transform().origin - $GolfBall.get_global_transform().origin + Vector3(0.0, 0.4, 0.0)
-	var golf_ball_movement = golf_ball_direction.normalized() * delta * 2
-	$GolfBall.transform.origin += golf_ball_movement
+	for golf_ball in $BallSpawner.get_children():
+		golf_ball.target = $GolfCart.transform.origin + Vector3(0, 0.17, 0)
+		var nudge_away = Vector3.ZERO
+		for gb2 in $BallSpawner.get_children():
+			if gb2.transform.origin.is_equal_approx(golf_ball.transform.origin):
+				continue
+			var displacement = gb2.transform.origin - golf_ball.transform.origin
+			var direction = displacement.normalized()
+			var force = -direction * 4 / (displacement.length_squared())
+			nudge_away += force
+		golf_ball.nudge_away = nudge_away
+		print(nudge_away)
 	
-	$GolfBall/Visual.rotate_y(delta * PI / 2)
 	
 	
-#	print($GolfCart.engine_force)
-	
-#	$GolfCart.engine_force = 0.0
-#	print(lerp($GolfCart.steering, steer_target, 0.1))
-#	$GolfCart.steering = 1.0
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
