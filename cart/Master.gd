@@ -19,6 +19,11 @@ var bounce_scale = 0.5
 
 var balls = 1
 
+var score = 0
+
+var gameover = false
+var gameover_time = -1.0
+
 func _physics_process(delta):
 	time += delta
 	
@@ -82,12 +87,12 @@ func _physics_process(delta):
 	
 	if balls < time / 10.0:
 		balls += 1
-		print("add ball")
 		$BallSpawner.add_child(golf_ball_scene.instance())
 		$BallAlarm.playing = true
 	
 	for golf_ball in $BallSpawner.get_children():
-		golf_ball.target = $GolfCart.transform.origin + Vector3(0, 0.17, 0)
+#		golf_ball.target = $GolfCart.transform.origin + Vector3(0, 0.17, 0)
+		golf_ball.target = $GolfCart/DriverArea.get_global_transform().origin + Vector3(0, 0.17, 0)
 		var nudge_away = Vector3.ZERO
 		for gb2 in $BallSpawner.get_children():
 			if gb2.transform.origin.is_equal_approx(golf_ball.transform.origin):
@@ -97,7 +102,17 @@ func _physics_process(delta):
 			var force = -direction * 4 / (displacement.length_squared())
 			nudge_away += force
 		golf_ball.nudge_away = nudge_away
-		print(nudge_away)
 	
+	if gameover:
+		$EndScreen.modulate = Color(1.0, 1.0, 1.0, clamp(time - gameover_time, 0.0, 1.0))
 	
+	if not gameover:
+		score += delta * 100
+
+
+func _on_GolfCart_driver_hit():
+	$EndScreen/Score.text = "SCORE  " + str(round(score))
+	gameover = true
+	gameover_time = time
 	
+#	print("driver hit")

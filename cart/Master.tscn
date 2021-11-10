@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://cart/GolfCart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sound/ES_Nervous Rabbit - Hampus Naeselius.mp3" type="AudioStream" id=3]
 [ext_resource path="res://sound/ball-alarm.wav" type="AudioStream" id=4]
 [ext_resource path="res://cart/Master.gd" type="Script" id=5]
+[ext_resource path="res://ui/EndScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ball/GolfBall.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=7]
@@ -50,8 +51,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8533, -0.85635, 2.38419e-07
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -2.0
 autoplay = true
 
 [node name="BallAlarm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -6.707
+volume_db = -16.0
+
+[node name="EndScreen" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[connection signal="driver_hit" from="GolfCart" to="." method="_on_GolfCart_driver_hit"]
