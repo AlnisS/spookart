@@ -151,6 +151,7 @@ transform = Transform( 0.989034, 0, 0.147689, 0, 1, 0, -0.147689, 0, 0.989034, -
 transform = Transform( 0.980863, 0, 0.194697, 0, 1, 0, -0.194697, 0, 0.980863, -1.58511, 0, -14.5756 )
 
 [node name="Tree1" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1702, -4.76837e-07, -14.111 )
 
 [node name="Tree2" parent="." instance=ExtResource( 8 )]
 transform = Transform( -0.0408689, 2.44827e-16, 0.999165, 5.00499e-18, 1, -2.44827e-16, -0.999165, -5.00499e-18, -0.0408689, 7.47489, 9.53674e-07, -16.2801 )
