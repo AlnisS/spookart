@@ -70,7 +70,7 @@ func _physics_process(delta):
 	$GolfCart.angular_damp = 0.2
 	
 	
-	var golf_ball_direction = $GolfCart.get_global_transform().origin - $GolfBall.get_global_transform().origin
+	var golf_ball_direction = $GolfCart.get_global_transform().origin - $GolfBall.get_global_transform().origin + Vector3(0.0, 0.4, 0.0)
 	var golf_ball_movement = golf_ball_direction.normalized() * delta * 2
 	$GolfBall.transform.origin += golf_ball_movement
 	
