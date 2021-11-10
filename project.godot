@@ -19,6 +19,13 @@ config/name="SpooKart"
 run/main_scene="res://cart/Master.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=540
+window/size/height=400
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 steer_left={

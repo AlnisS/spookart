@@ -22,28 +22,28 @@ ao_texture_channel = 0
 uv1_scale = Vector3( 0.3, 0.3, 0.3 )
 uv1_triplanar = true
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="OpenSimplexNoise" id=2]
 
-[sub_resource type="NoiseTexture" id=6]
+[sub_resource type="NoiseTexture" id=3]
 seamless = true
-noise = SubResource( 5 )
+noise = SubResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 6 )
 shader_param/INTENSITY = 1.0
 shader_param/SCALE = 1.0
-shader_param/NOISE_PATTERN = SubResource( 6 )
+shader_param/NOISE_PATTERN = SubResource( 3 )
 
-[sub_resource type="PlaneMesh" id=4]
+[sub_resource type="PlaneMesh" id=5]
 size = Vector2( 2000, 2000 )
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 6 )
 shader_param/INTENSITY = 0.5
 shader_param/SCALE = 0.5
-shader_param/NOISE_PATTERN = SubResource( 6 )
+shader_param/NOISE_PATTERN = SubResource( 3 )
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=7]
 flags_transparent = true
 flags_unshaded = true
 
@@ -77,6 +77,9 @@ depth = 6.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594811, 0 )
 
 [node name="TargetCamera" type="Camera" parent="GolfCart"]
+transform = Transform( -1.32356e-07, -0.236278, 0.971685, 9.49992e-08, 0.971685, 0.236278, -1, 1.23582e-07, -1.06162e-07, -0.0591539, 1.62384, 0.374998 )
+
+[node name="TargetCamera2" type="Camera" parent="GolfCart"]
 transform = Transform( -1.56391e-07, -0.545517, 0.8381, 4.56609e-08, 0.8381, 0.545517, -1, 1.23583e-07, -1.06163e-07, 4.95121, 6.15282, 0 )
 
 [node name="PlayerCamera" type="Camera" parent="."]
@@ -85,17 +88,19 @@ current = true
 
 [node name="Fog" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430467, 0 )
-material_override = SubResource( 7 )
-mesh = SubResource( 4 )
+material_override = SubResource( 4 )
+cast_shadow = 0
+mesh = SubResource( 5 )
 
 [node name="Fog2" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88619, 0 )
-material_override = SubResource( 3 )
-mesh = SubResource( 4 )
+material_override = SubResource( 6 )
+cast_shadow = 0
+mesh = SubResource( 5 )
 
 [node name="BounceEffect" type="CSGCombiner" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0 )
-material_override = SubResource( 8 )
+material_override = SubResource( 7 )
 
 [node name="BounceOuter" type="CSGCylinder" parent="BounceEffect"]
 height = 0.2
