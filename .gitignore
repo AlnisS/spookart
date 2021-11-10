@@ -12,3 +12,7 @@ data_*/
 
 # Blender temporary files
 *.blend1
+
+# Proprietary sound file
+/sound/ES_Nervous Rabbit - Hampus Naeselius.mp3
+

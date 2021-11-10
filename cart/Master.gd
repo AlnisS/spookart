@@ -20,8 +20,8 @@ func _physics_process(delta):
 	
 	var bounce_progress = (time - bounce_time) / bounce_scale
 	
-	$BounceEffect/BounceOuter.radius = bounce_progress * 8
-	$BounceEffect/BounceInner.radius = bounce_progress * 8 - 0.2
+	$BounceEffect/BounceOuter.radius = bounce_progress * 12
+	$BounceEffect/BounceInner.radius = bounce_progress * 12 - 0.4
 	$BounceEffect.material_override.albedo_color = Color(1.0, 1.0, 1.0, pow(1.0 - bounce_progress, 3))
 	
 	var view_displacement = $PlayerCamera.transform.origin - $GolfCart/TargetCamera.get_global_transform().origin
@@ -58,9 +58,11 @@ func _physics_process(delta):
 	else:
 		$GolfCart.brake = 0.0
 	
-	if Input.is_action_just_pressed("jump") and $GolfCart.get_global_transform().origin.y <= 1.2:
+#	if Input.is_action_just_pressed("jump") and $GolfCart.get_global_transform().origin.y <= 1.2:
+	if Input.is_action_just_pressed("jump"):
 		$GolfCart.apply_central_impulse(Vector3(0.0, 450.0, 1.0))
-		$BounceEffect.transform.origin = Vector3($GolfCart.transform.origin.x, 0.17, $GolfCart.transform.origin.z)
+#		$BounceEffect.transform.origin = Vector3($GolfCart.transform.origin.x, 0.17, $GolfCart.transform.origin.z)
+		$BounceEffect.transform.origin = $GolfCart.transform.origin - Vector3(0, 0, 0)
 		bounce_time = time
 	
 	var orientation: Vector3 = $GolfCart.transform.basis.y

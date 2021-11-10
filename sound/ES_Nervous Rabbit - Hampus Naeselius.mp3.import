@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ES_Nervous Rabbit - Hampus Naeselius.mp3-9ba64e1440e8407546040c1320d45df8.mp3str"
+
+[deps]
+
+source_file="res://sound/ES_Nervous Rabbit - Hampus Naeselius.mp3"
+dest_files=[ "res://.import/ES_Nervous Rabbit - Hampus Naeselius.mp3-9ba64e1440e8407546040c1320d45df8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

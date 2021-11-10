@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://cart/GolfCart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sound/ES_Nervous Rabbit - Hampus Naeselius.mp3" type="AudioStream" id=3]
 [ext_resource path="res://cart/Master.gd" type="Script" id=5]
 [ext_resource path="res://ball/GolfBall.tscn" type="PackedScene" id=8]
 
@@ -43,3 +44,7 @@ sides = 32
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8533, 1.24365, 2.38419e-07 )
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
