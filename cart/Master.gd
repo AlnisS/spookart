@@ -102,12 +102,15 @@ func _physics_process(delta):
 			var force = -direction * 4 / (displacement.length_squared())
 			nudge_away += force
 		golf_ball.nudge_away = nudge_away
+		
+		score += delta * 100 / (golf_ball.target - golf_ball.transform.origin).length()
 	
 	if gameover:
 		$EndScreen.modulate = Color(1.0, 1.0, 1.0, clamp(time - gameover_time, 0.0, 1.0))
 	
 	if not gameover:
-		score += delta * 100
+		score += delta * 20
+		$ScoreLabel.text = "SCORE  " + str(round(score))
 
 
 func _on_GolfCart_driver_hit():
