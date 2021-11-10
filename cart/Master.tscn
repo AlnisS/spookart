@@ -169,6 +169,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CreditsButton" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -133.0
+margin_top = 144.0
+margin_right = -27.0
+margin_bottom = 190.0
+custom_colors/font_color_disabled = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_focus = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameTitleLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -184,7 +203,6 @@ __meta__ = {
 }
 
 [node name="InstructionsPopup" type="Popup" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -193,6 +211,9 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="InstructionsLabel" type="Label" parent="InstructionsPopup"]
 anchor_left = 0.5
@@ -222,7 +243,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CreditsPopup" type="Popup" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLabel" type="Label" parent="CreditsPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.5
+margin_top = -83.5
+margin_right = 149.5
+margin_bottom = 83.5
+text = "Made by Alnis Smidchens
+for the 2021 Autumn game jam
+organized by Game Dev Club @ UW
+
+https://alnis.dev
+contact@alnis.dev
+@auxiliarymoose
+
+Assets and Music by various creators
+See credits.txt for details"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="driver_hit" from="GolfCart" to="." method="_on_GolfCart_driver_hit"]
 [connection signal="play" from="PlayButton" to="." method="_on_PlayButton_play"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="InstructionsButton" to="." method="_on_InstructionsButton_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_CreditsButton_pressed"]

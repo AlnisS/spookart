@@ -155,8 +155,14 @@ func _on_PlayButton_play():
 	$GameTitleLabel.hide()
 	$InstructionsButton.hide()
 	$InstructionsPopup.hide()
+	$CreditsButton.hide()
+	$CreditsPopup.hide()
 	get_tree().paused = false
 
 
 func _on_InstructionsButton_pressed():
 	$InstructionsPopup.popup_centered()
+
+
+func _on_CreditsButton_pressed():
+	$CreditsPopup.popup_centered()
