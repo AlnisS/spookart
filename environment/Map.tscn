@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://environment/ground/TexturesCom_Ground_SoilRocky3_2x2_512_normal.png" type="Texture" id=1]
+[ext_resource path="res://environment/ground/TexturesCom_Ground_SoilRocky3_2x2_512_ao.png" type="Texture" id=2]
+[ext_resource path="res://environment/ground/GroundFog.shader" type="Shader" id=3]
+[ext_resource path="res://environment/ground/TexturesCom_Ground_SoilRocky3_2x2_512_albedo.png" type="Texture" id=4]
+[ext_resource path="res://environment/fence/Fence.tscn" type="PackedScene" id=5]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+
+[sub_resource type="NoiseTexture" id=2]
+seamless = true
+noise = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 3 )
+shader_param/INTENSITY = 1.0
+shader_param/SCALE = 1.0
+shader_param/NOISE_PATTERN = SubResource( 2 )
+
+[sub_resource type="PlaneMesh" id=4]
+size = Vector2( 2000, 2000 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 3 )
+shader_param/INTENSITY = 0.5
+shader_param/SCALE = 0.5
+shader_param/NOISE_PATTERN = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 4 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 1 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 0.3, 0.3, 0.3 )
+uv1_triplanar = true
+
+[node name="Map" type="Spatial"]
+
+[node name="Fog" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430467, 0 )
+material_override = SubResource( 3 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+
+[node name="Fog2" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88619, 0 )
+material_override = SubResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+
+[node name="Ground" type="CSGCombiner" parent="."]
+material_override = SubResource( 6 )
+use_collision = true
+
+[node name="GroundBox" type="CSGBox" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+material_override = SubResource( 6 )
+use_collision = true
+width = 60.0
+depth = 60.0
+
+[node name="ElevatedBox" type="CSGBox" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 13 )
+width = 20.0
+height = 4.0
+depth = 6.0
+
+[node name="RampBox" type="CSGBox" parent="Ground"]
+transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 7.63645, -2.73779, 13 )
+width = 20.0
+height = 4.0
+depth = 6.0
+
+[node name="Fence" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.689657, 0, 0.724136, 0, 1, 0, -0.724136, 0, 0.689657, -9.44587, 0, 0.748642 )
+
+[node name="Fence2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.828989, 0, 0.559265, 0, 1, 0, -0.559265, 0, 0.828989, -16.473, 0, 6.2526 )
+
+[node name="Fence3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -12.3271, 0, -4.48978 )
+
+[node name="Fence4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -17.9412, 0, 2.64532 )
+
+[node name="Fence10" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.970042, 0, 0.242938, 0, 1, 0, -0.242938, 0, 0.970042, 13.9023, 0, 5.64085 )
+
+[node name="Fence11" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, 16.0124, 0, 12.399 )
+
+[node name="Fence5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.973829, 0, -0.22728, 0, 1, 0, 0.22728, 0, 0.973829, -17.0256, 0, -2.77552 )
+
+[node name="Fence6" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.989265, 0, -0.146135, 0, 1, 0, 0.146135, 0, 0.989265, -29.0645, 4.76837e-07, 6.00366 )
+
+[node name="Fence4" parent="Fence6" instance=ExtResource( 5 )]
+transform = Transform( 0.997222, 0, 0.0744914, 0, 1, 0, -0.0744914, 0, 0.997222, -0.641726, 0, -9.88334 )
+
+[node name="Fence5" parent="Fence6" instance=ExtResource( 5 )]
+transform = Transform( 0.989034, 0, 0.147689, 0, 1, 0, -0.147689, 0, 0.989034, -0.464127, 0, -4.92176 )
+
+[node name="Fence7" parent="Fence6" instance=ExtResource( 5 )]
+transform = Transform( 0.980863, 0, 0.194697, 0, 1, 0, -0.194697, 0, 0.980863, -1.58511, 0, -14.5756 )
+
+[node name="Fence7" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.989265, 0, -0.146135, 0, 1, 0, 0.146135, 0, 0.989265, -29.0645, 4.76837e-07, 25.285 )
+
+[node name="Fence4" parent="Fence7" instance=ExtResource( 5 )]
+transform = Transform( 0.997222, 0, 0.0744914, 0, 1, 0, -0.0744914, 0, 0.997222, -0.641726, 0, -9.88334 )
+
+[node name="Fence5" parent="Fence7" instance=ExtResource( 5 )]
+transform = Transform( 0.989034, 0, 0.147689, 0, 1, 0, -0.147689, 0, 0.989034, -0.464127, 0, -4.92176 )
+
+[node name="Fence7" parent="Fence7" instance=ExtResource( 5 )]
+transform = Transform( 0.980863, 0, 0.194697, 0, 1, 0, -0.194697, 0, 0.980863, -1.58511, 0, -14.5756 )
+
+[node name="Fence8" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.989265, 0, -0.146135, 0, 1, 0, 0.146135, 0, 0.989265, -29.0645, 4.76837e-07, -13.3396 )
+
+[node name="Fence4" parent="Fence8" instance=ExtResource( 5 )]
+transform = Transform( 0.997222, 0, 0.0744914, 0, 1, 0, -0.0744914, 0, 0.997222, -0.641726, 0, -9.88334 )
+
+[node name="Fence5" parent="Fence8" instance=ExtResource( 5 )]
+transform = Transform( 0.989034, 0, 0.147689, 0, 1, 0, -0.147689, 0, 0.989034, -0.464127, 0, -4.92176 )
+
+[node name="Fence7" parent="Fence8" instance=ExtResource( 5 )]
+transform = Transform( 0.980863, 0, 0.194697, 0, 1, 0, -0.194697, 0, 0.980863, -1.58511, 0, -14.5756 )
+
+[node name="Fence9" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.111105, 0, 0.993809, 0, 1, 0, -0.993809, 0, 0.111105, -2.5144, 4.07369, 15.4467 )
+
+[node name="Fence4" parent="Fence9" instance=ExtResource( 5 )]
+transform = Transform( 0.997222, 0, 0.0744914, 0, 1, 0, -0.0744914, 0, 0.997222, -0.641726, 0, -9.88334 )
+
+[node name="Fence5" parent="Fence9" instance=ExtResource( 5 )]
+transform = Transform( 0.989034, 0, 0.147689, 0, 1, 0, -0.147689, 0, 0.989034, -0.464127, 0, -4.92176 )
+
+[node name="Fence7" parent="Fence9" instance=ExtResource( 5 )]
+transform = Transform( 0.980863, 0, 0.194697, 0, 1, 0, -0.194697, 0, 0.980863, -1.58511, 0, -14.5756 )

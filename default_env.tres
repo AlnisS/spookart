@@ -11,7 +11,6 @@ ground_horizon_color = Color( 0.42, 0.42, 0.42, 1 )
 background_mode = 3
 background_sky = SubResource( 1 )
 ambient_light_energy = 0.5
-fog_enabled = true
 fog_color = Color( 0, 0, 0, 1 )
 fog_depth_begin = 5.0
 fog_depth_end = 40.0
