@@ -15,10 +15,11 @@ var time = 0.0
 func _process(delta):
 	time += delta
 	
-	var golf_ball_direction = target - get_global_transform().origin + Vector3(0.0, 0.4, 0.0)
-	var golf_ball_movement = golf_ball_direction.normalized() * delta * 2
-	transform.origin += golf_ball_movement
-	transform.origin += nudge_away * delta
+	if not get_tree().paused:
+		var golf_ball_direction = target - get_global_transform().origin + Vector3(0.0, 0.4, 0.0)
+		var golf_ball_movement = golf_ball_direction.normalized() * delta * 2
+		transform.origin += golf_ball_movement
+		transform.origin += nudge_away * delta
 	
 	$Visual.rotate_y(delta * PI / 2)
 	

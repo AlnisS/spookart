@@ -28,6 +28,7 @@ albedo_color = Color( 0.972549, 0.0745098, 0.0313726, 1 )
 radius = 0.8
 
 [node name="GolfBall" type="Spatial"]
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Visual" type="Spatial" parent="."]

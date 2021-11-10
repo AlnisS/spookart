@@ -10,7 +10,7 @@ var golf_ball_scene = preload("res://ball/GolfBall.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_tree().paused = true
 
 var time = 0.0
 
@@ -132,3 +132,12 @@ func _on_GolfCart_driver_hit():
 	gameover_time = time
 	
 #	print("driver hit")
+
+
+func _on_PlayButton_play():
+	$BounceEffect.show()
+	$ScoreLabel.show()
+	$ChargeBar.show()
+	$ChargeLabel.show()
+	$PlayButton.hide()
+	get_tree().paused = false

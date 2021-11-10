@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://cart/GolfCart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/Map.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ui/EndScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/EBGaramond-VariableFont_wght.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://ball/GolfBall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://cart/PlayButton.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=7]
 flags_transparent = true
@@ -22,11 +23,19 @@ bg_color = Color( 0.00784314, 0.54902, 0.54902, 1 )
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.341176, 0.290196, 0.290196, 1 )
 
+[sub_resource type="DynamicFont" id=11]
+size = 30
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 40
+font_data = ExtResource( 7 )
+
 [node name="Master" type="Spatial"]
 script = ExtResource( 5 )
 
 [node name="GolfCart" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594811, 0 )
+transform = Transform( 0.928298, 0, -0.371838, 0, 1, 0, 0.371838, 0, 0.928298, -2.60467, 0.594811, 2.38208 )
 
 [node name="TargetCamera" type="Camera" parent="GolfCart"]
 transform = Transform( -1.32356e-07, -0.236278, 0.971685, 9.49992e-08, 0.971685, 0.236278, -1, 1.23582e-07, -1.06162e-07, -0.0591539, 1.62384, 0.374998 )
@@ -35,11 +44,12 @@ transform = Transform( -1.32356e-07, -0.236278, 0.971685, 9.49992e-08, 0.971685,
 transform = Transform( -1.56391e-07, -0.545517, 0.8381, 4.56609e-08, 0.8381, 0.545517, -1, 1.23583e-07, -1.06163e-07, 4.95121, 6.15282, 0 )
 
 [node name="PlayerCamera" type="Camera" parent="."]
-transform = Transform( 0.0367832, 0, 0.999323, 0, 1, 0, -0.999323, 0, 0.0367832, 6.55898, 1.97953, -0.189761 )
+transform = Transform( -0.999983, 0, 0.00577694, 0, 1, 0, -0.00577694, 0, -0.999983, -6.38902, 1.97953, -4.31615 )
 current = true
 
 [node name="BounceEffect" type="CSGCombiner" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0 )
+visible = false
 material_override = SubResource( 7 )
 
 [node name="BounceOuter" type="CSGCylinder" parent="BounceEffect"]
@@ -56,6 +66,7 @@ sides = 32
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8533, -0.85635, 2.38419e-07 )
 
 [node name="GolfBall" parent="BallSpawner" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8757, 2.4853, 0.699039 )
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
@@ -69,6 +80,7 @@ stream = ExtResource( 4 )
 volume_db = -16.0
 
 [node name="ScoreLabel" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -32.5
@@ -82,6 +94,7 @@ __meta__ = {
 }
 
 [node name="ChargeBar" type="ProgressBar" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -99,6 +112,7 @@ __meta__ = {
 }
 
 [node name="ChargeLabel" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -116,4 +130,40 @@ __meta__ = {
 [node name="EndScreen" parent="." instance=ExtResource( 6 )]
 modulate = Color( 1, 1, 1, 0 )
 
+[node name="PlayButton" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -132.636
+margin_top = 37.6189
+margin_right = -34.6362
+margin_bottom = 83.6189
+custom_colors/font_color_disabled = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_focus = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Play"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -107.0
+margin_top = 9.0
+margin_right = 107.0
+margin_bottom = 62.0
+custom_colors/font_color = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "SPOOKART"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="driver_hit" from="GolfCart" to="." method="_on_GolfCart_driver_hit"]
+[connection signal="play" from="PlayButton" to="." method="_on_PlayButton_play"]
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
