@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://environment/ground/TexturesCom_Ground_SoilRocky3_2x2_512_normal.png" type="Texture" id=1]
 [ext_resource path="res://environment/ground/TexturesCom_Ground_SoilRocky3_2x2_512_ao.png" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://environment/trees/Tree3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://environment/trees/Tree1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://environment/trees/Tree2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://environment/trees2/Birch2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://environment/trees2/Birch3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://environment/trees2/Birch1.tscn" type="PackedScene" id=11]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 
@@ -158,3 +161,12 @@ transform = Transform( -0.0408689, 2.44827e-16, 0.999165, 5.00499e-18, 1, -2.448
 
 [node name="Tree3" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.518665, 0, -0.854977, 0, 1, 0, 0.854977, 0, 0.518665, 17.5553, 9.53674e-07, 2.8672 )
+
+[node name="Birch1" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.85187, 0, 6.19633 )
+
+[node name="Birch2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.03328, 0, 6.7647 )
+
+[node name="Birch3" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.59988, 0, 5.23902 )
