@@ -62,13 +62,13 @@ func _physics_process(delta):
 	
 	$GolfCart/Chassis/SteeringBase/SteeringWheel.rotation.y = $GolfCart.steering * 2
 	
-	if Input.is_action_pressed("gas"):
+	if Input.is_action_pressed("gas") and charge > 0:
 		$GolfCart.engine_force = 150.0
 		charge -= 1.5 * delta
 	else:
 		$GolfCart.engine_force = 0.0
 	
-	if Input.is_action_pressed("brake"):
+	if Input.is_action_pressed("brake") and charge > 0:
 		$GolfCart.brake = 1.0
 		$GolfCart.engine_force = -150.0
 		charge -= 1.5 * delta
@@ -76,13 +76,17 @@ func _physics_process(delta):
 		$GolfCart.brake = 0.0
 	
 #	if Input.is_action_just_pressed("jump") and $GolfCart.get_global_transform().origin.y <= 1.2:
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and charge > 10:
 		charge -= 10
 #		$GolfCart.apply_central_impulse(Vector3(0.0, 450.0, 1.0))
 		$GolfCart.apply_central_impulse($GolfCart.transform.basis.y * 450)
 #		$BounceEffect.transform.origin = Vector3($GolfCart.transform.origin.x, 0.17, $GolfCart.transform.origin.z)
 		$BounceEffect.transform.origin = $GolfCart.transform.origin - Vector3(0, 0, 0)
 		bounce_time = time
+	
+	if Input.is_action_just_pressed("dash") and charge > 10:
+		charge -= 10
+		$GolfCart.apply_central_impulse($GolfCart.transform.basis.x * -450)
 	
 	var orientation: Vector3 = $GolfCart.transform.basis.y
 	var correction = orientation.cross(Vector3(0.0, 1.0, 0.0))
@@ -117,6 +121,9 @@ func _physics_process(delta):
 		score += delta * 20
 		$ScoreLabel.text = "SCORE  " + str(round(score))
 		$ChargeBar.value = charge
+	
+	if $GolfCart.get_global_transform().origin.y < 0 and not gameover:
+		_on_GolfCart_driver_hit()
 
 
 func _on_GolfCart_driver_hit():
