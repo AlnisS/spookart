@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://cart/GolfCart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/ground/TexturesCom_Ground_SoilRocky3_2x2_512_albedo.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://cart/Master.gd" type="Script" id=5]
 [ext_resource path="res://environment/ground/GroundFog.shader" type="Shader" id=6]
 [ext_resource path="res://environment/fence/Fence.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ball/GolfBall.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_world_triplanar = true
@@ -180,3 +181,6 @@ transform = Transform( 0.989034, 0, 0.147689, 0, 1, 0, -0.147689, 0, 0.989034, -
 
 [node name="Fence7" parent="Fence9" instance=ExtResource( 7 )]
 transform = Transform( 0.980863, 0, 0.194697, 0, 1, 0, -0.194697, 0, 0.980863, -1.58511, 0, -14.5756 )
+
+[node name="GolfBall" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8533, 1.24365, 2.38419e-07 )

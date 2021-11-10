@@ -31,7 +31,12 @@ func _physics_process(delta):
 #	print(extra_lerp)
 #	print(view_distance)
 	
-	$PlayerCamera.transform = $PlayerCamera.transform.interpolate_with($GolfCart/TargetCamera.get_global_transform(), 0.3 + extra_lerp)
+	var target_transform = $GolfCart/TargetCamera.get_global_transform()
+	if Input.is_action_pressed("peek"):
+		target_transform.basis = target_transform.basis.rotated($GolfCart.transform.basis.y, PI * -7/8)
+	
+	
+	$PlayerCamera.transform = $PlayerCamera.transform.interpolate_with(target_transform, 0.3 + extra_lerp)
 	
 	var steer_target = 0.0
 	if Input.is_action_pressed("steer_left"):
@@ -41,7 +46,6 @@ func _physics_process(delta):
 	$GolfCart.steering = lerp($GolfCart.steering, steer_target, 0.1)
 	
 	$GolfCart/Chassis/SteeringBase/SteeringWheel.rotation.y = $GolfCart.steering * 2
-	print($GolfCart.steering)
 	
 	if Input.is_action_pressed("gas"):
 		$GolfCart.engine_force = 150.0
@@ -54,8 +58,6 @@ func _physics_process(delta):
 	else:
 		$GolfCart.brake = 0.0
 	
-#	print($GolfCart.get_global_transform().origin.y)
-	
 	if Input.is_action_just_pressed("jump") and $GolfCart.get_global_transform().origin.y <= 1.2:
 		$GolfCart.apply_central_impulse(Vector3(0.0, 450.0, 1.0))
 		$BounceEffect.transform.origin = Vector3($GolfCart.transform.origin.x, 0.17, $GolfCart.transform.origin.z)
@@ -66,6 +68,14 @@ func _physics_process(delta):
 	
 	$GolfCart.add_torque(correction * 1000.0)
 	$GolfCart.angular_damp = 0.2
+	
+	
+	var golf_ball_direction = $GolfCart.get_global_transform().origin - $GolfBall.get_global_transform().origin
+	var golf_ball_movement = golf_ball_direction.normalized() * delta * 2
+	$GolfBall.transform.origin += golf_ball_movement
+	
+	$GolfBall/Visual.rotate_y(delta * PI / 2)
+	
 	
 #	print($GolfCart.engine_force)
 	

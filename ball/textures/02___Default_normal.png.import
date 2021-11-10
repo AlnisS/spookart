@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/02___Default_normal.png-572be66bcd6fe1c1dfc6f187453d1d16.s3tc.stex"
+path.etc="res://.import/02___Default_normal.png-572be66bcd6fe1c1dfc6f187453d1d16.etc.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://ball/textures/02___Default_normal.png"
+dest_files=[ "res://.import/02___Default_normal.png-572be66bcd6fe1c1dfc6f187453d1d16.s3tc.stex", "res://.import/02___Default_normal.png-572be66bcd6fe1c1dfc6f187453d1d16.etc.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=1
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
