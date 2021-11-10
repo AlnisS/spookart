@@ -16,3 +16,6 @@ data_*/
 # Proprietary sound file
 /sound/ES_Nervous Rabbit - Hampus Naeselius.mp3
 
+# Builds
+build/
+

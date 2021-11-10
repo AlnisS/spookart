@@ -109,7 +109,7 @@ func _physics_process(delta):
 #		var angle = rand_range(0, 2 * PI)
 #		var location = Vector3(50 * cos(angle), 0, 50 * sin(angle))
 		new_golf_ball.transform.origin = location
-		$BallAlarm.playing = true
+#		$BallAlarm.playing = true
 	
 	for golf_ball in $BallSpawner.get_children():
 #		golf_ball.target = $GolfCart.transform.origin + Vector3(0, 0.17, 0)
