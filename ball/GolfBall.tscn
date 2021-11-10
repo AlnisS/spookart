@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ball/02___Default.material" type="Material" id=1]
+[ext_resource path="res://ball/GolfBall.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Mesh"
@@ -17,7 +18,14 @@ surfaces/0 = {
 "vertex_count": 559
 }
 
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+flags_disable_ambient_light = true
+albedo_color = Color( 0.972549, 0.0745098, 0.0313726, 1 )
+
 [node name="GolfBall" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="Visual" type="Spatial" parent="."]
 
@@ -25,3 +33,51 @@ surfaces/0 = {
 transform = Transform( 0.02, 0, 0, 0, -8.74228e-10, 0.02, 0, -0.02, -8.74228e-10, 1.87237, -0.787903, 0 )
 mesh = SubResource( 1 )
 material/0 = null
+
+[node name="Ring" type="CSGCombiner" parent="."]
+material_override = SubResource( 2 )
+cast_shadow = 0
+operation = 2
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Ring"]
+radius = 0.88
+height = 0.02
+sides = 32
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Ring"]
+operation = 2
+radius = 0.86
+height = 0.2
+sides = 32
+
+[node name="Ring2" type="CSGCombiner" parent="."]
+material_override = SubResource( 2 )
+cast_shadow = 0
+operation = 2
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Ring2"]
+radius = 0.92
+height = 0.02
+sides = 32
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Ring2"]
+operation = 2
+radius = 0.9
+height = 0.2
+sides = 32
+
+[node name="Ring3" type="CSGCombiner" parent="."]
+material_override = SubResource( 2 )
+cast_shadow = 0
+operation = 2
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Ring3"]
+radius = 0.84
+height = 0.02
+sides = 32
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Ring3"]
+operation = 2
+radius = 0.82
+height = 0.2
+sides = 32
