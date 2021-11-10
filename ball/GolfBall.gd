@@ -11,15 +11,30 @@ func _ready():
 
 var time = 0.0
 
+var frozen = false
+
+var frozen_time = -1.0
+
+func freeze():
+	frozen = true
+	frozen_time = time
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
 	
-	if not get_tree().paused:
+	if not get_tree().paused and not frozen:
 		var golf_ball_direction = target - get_global_transform().origin + Vector3(0.0, 0.4, 0.0)
 		var golf_ball_movement = golf_ball_direction.normalized() * delta * 2
 		transform.origin += golf_ball_movement
 		transform.origin += nudge_away * delta
+	
+	if frozen:
+		$Ring.material_override.albedo_color = Color("0888f8")
+		if time - frozen_time > 5.0:
+			frozen = false
+	else:
+		$Ring.material_override.albedo_color = Color("f81308")
 	
 	$Visual.rotate_y(delta * PI / 2)
 	

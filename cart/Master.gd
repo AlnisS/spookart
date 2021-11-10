@@ -88,6 +88,11 @@ func _physics_process(delta):
 		charge -= 10
 		$GolfCart.apply_central_impulse($GolfCart.transform.basis.x * -450)
 	
+	if Input.is_action_just_pressed("freeze") and charge > 10:
+		charge -= 10
+		for golf_ball in $BallSpawner.get_children():
+			golf_ball.freeze()
+	
 	var orientation: Vector3 = $GolfCart.transform.basis.y
 	var correction = orientation.cross(Vector3(0.0, 1.0, 0.0))
 	
