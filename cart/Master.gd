@@ -134,7 +134,7 @@ func _physics_process(delta):
 		$ScoreLabel.text = "SCORE  " + str(round(score))
 		$ChargeBar.value = charge
 	
-	if $GolfCart.get_global_transform().origin.y < 0 and not gameover:
+	if $GolfCart.get_global_transform().origin.y < -1 and not gameover:
 		_on_GolfCart_driver_hit()
 
 
@@ -153,4 +153,10 @@ func _on_PlayButton_play():
 	$ChargeLabel.show()
 	$PlayButton.hide()
 	$GameTitleLabel.hide()
+	$InstructionsButton.hide()
+	$InstructionsPopup.hide()
 	get_tree().paused = false
+
+
+func _on_InstructionsButton_pressed():
+	$InstructionsPopup.popup_centered()

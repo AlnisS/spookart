@@ -24,7 +24,7 @@ bg_color = Color( 0.00784314, 0.54902, 0.54902, 1 )
 bg_color = Color( 0.341176, 0.290196, 0.290196, 1 )
 
 [sub_resource type="DynamicFont" id=11]
-size = 30
+size = 20
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=12]
@@ -134,10 +134,10 @@ modulate = Color( 1, 1, 1, 0 )
 pause_mode = 2
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -132.636
-margin_top = 37.6189
-margin_right = -34.6362
-margin_bottom = 83.6189
+margin_left = -133.0
+margin_top = 38.0
+margin_right = -27.0
+margin_bottom = 84.0
 custom_colors/font_color_disabled = Color( 0.819608, 0.117647, 0.117647, 1 )
 custom_colors/font_color_focus = Color( 0.819608, 0.117647, 0.117647, 1 )
 custom_colors/font_color = Color( 0.819608, 0.117647, 0.117647, 1 )
@@ -146,6 +146,25 @@ custom_colors/font_color_pressed = Color( 0.819608, 0.117647, 0.117647, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "Play"
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsButton" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -133.0
+margin_top = 91.0
+margin_right = -27.0
+margin_bottom = 137.0
+custom_colors/font_color_disabled = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_focus = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_colors/font_color_pressed = Color( 0.819608, 0.117647, 0.117647, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Instructions"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -164,6 +183,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="InstructionsPopup" type="Popup" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="InstructionsLabel" type="Label" parent="InstructionsPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.5
+margin_top = -109.0
+margin_right = 149.5
+margin_bottom = 109.0
+text = "Escape the golf balls!
+The closer you are,
+the more points you earn...
+
+Be mindful of your golf cart's charge!
+
+W - accelerate
+S - brake/reverse
+A/D - left/right
+Shift - look back
+
+Space - jump
+Ctrl - dash
+F - freeze"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="driver_hit" from="GolfCart" to="." method="_on_GolfCart_driver_hit"]
 [connection signal="play" from="PlayButton" to="." method="_on_PlayButton_play"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="InstructionsButton" to="." method="_on_InstructionsButton_pressed"]
