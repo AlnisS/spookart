@@ -21,6 +21,8 @@ var balls = 1
 
 var score = 0
 
+var charge = 100.0
+
 var gameover = false
 var gameover_time = -1.0
 
@@ -62,17 +64,20 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("gas"):
 		$GolfCart.engine_force = 150.0
+		charge -= 1.5 * delta
 	else:
 		$GolfCart.engine_force = 0.0
 	
 	if Input.is_action_pressed("brake"):
 		$GolfCart.brake = 1.0
 		$GolfCart.engine_force = -150.0
+		charge -= 1.5 * delta
 	else:
 		$GolfCart.brake = 0.0
 	
 #	if Input.is_action_just_pressed("jump") and $GolfCart.get_global_transform().origin.y <= 1.2:
 	if Input.is_action_just_pressed("jump"):
+		charge -= 10
 #		$GolfCart.apply_central_impulse(Vector3(0.0, 450.0, 1.0))
 		$GolfCart.apply_central_impulse($GolfCart.transform.basis.y * 450)
 #		$BounceEffect.transform.origin = Vector3($GolfCart.transform.origin.x, 0.17, $GolfCart.transform.origin.z)
@@ -111,6 +116,7 @@ func _physics_process(delta):
 	if not gameover:
 		score += delta * 20
 		$ScoreLabel.text = "SCORE  " + str(round(score))
+		$ChargeBar.value = charge
 
 
 func _on_GolfCart_driver_hit():
