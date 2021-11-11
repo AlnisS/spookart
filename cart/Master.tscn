@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://cart/GolfCart.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/Map.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://ui/EndScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/EBGaramond-VariableFont_wght.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://ball/GolfBall.tscn" type="PackedScene" id=8]
-[ext_resource path="res://cart/PlayButton.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=7]
 flags_transparent = true
@@ -145,7 +144,6 @@ custom_colors/font_color_hover = Color( 0.819608, 0.117647, 0.117647, 1 )
 custom_colors/font_color_pressed = Color( 0.819608, 0.117647, 0.117647, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "Play"
-script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -281,7 +279,6 @@ __meta__ = {
 }
 
 [connection signal="driver_hit" from="GolfCart" to="." method="_on_GolfCart_driver_hit"]
-[connection signal="play" from="PlayButton" to="." method="_on_PlayButton_play"]
-[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="InstructionsButton" to="." method="_on_InstructionsButton_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_CreditsButton_pressed"]

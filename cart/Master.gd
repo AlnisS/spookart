@@ -19,6 +19,7 @@ var charge = 100.0
 var gameover = false
 var gameover_time = -1.0
 
+
 func _physics_process(delta):
 	time += delta
 	
@@ -134,7 +135,7 @@ func _on_GolfCart_driver_hit():
 	gameover_time = time
 
 
-func _on_PlayButton_play():
+func _on_PlayButton_pressed():
 	$BounceEffect.show()
 	$ScoreLabel.show()
 	$ChargeBar.show()
