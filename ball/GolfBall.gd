@@ -4,22 +4,18 @@ extends Spatial
 var target = Vector3.ZERO
 var nudge_away = Vector3.ZERO
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 var time = 0.0
 
 var frozen = false
 
 var frozen_time = -1.0
 
+# TODO make freeze work when new ball is instanced while others are frozen
+# current behavior: all balls switch back to red and new one still moves
 func freeze():
 	frozen = true
 	frozen_time = time
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time += delta
 	
