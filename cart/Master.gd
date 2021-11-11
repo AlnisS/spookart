@@ -105,7 +105,7 @@ func _physics_process(delta):
 		$BallSpawner.add_child(new_golf_ball)
 		var location = $GolfCart.get_global_transform().origin
 		location.y = 0
-		location = location.normalized() * 50
+		location = location.normalized() * 60
 #		var angle = rand_range(0, 2 * PI)
 #		var location = Vector3(50 * cos(angle), 0, 50 * sin(angle))
 		new_golf_ball.transform.origin = location
@@ -139,6 +139,9 @@ func _physics_process(delta):
 
 
 func _on_GolfCart_driver_hit():
+	if gameover:
+		return
+	
 	$EndScreen/Score.text = "SCORE  " + str(round(score))
 	gameover = true
 	gameover_time = time
