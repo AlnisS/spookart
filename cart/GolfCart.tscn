@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://cart/golfcart.material" type="Material" id=1]
 [ext_resource path="res://cart/golfcart_glass.material" type="Material" id=2]
@@ -122,6 +122,9 @@ surfaces/0 = {
 radius = 0.669569
 height = 0.822698
 
+[sub_resource type="SpatialMaterial" id=12]
+flags_unshaded = true
+
 [node name="GolfCart" type="VehicleBody"]
 steering = 0.3
 script = ExtResource( 3 )
@@ -203,7 +206,7 @@ transform = Transform( -1.31134e-09, 0, 0.03, 0, 0.03, 0, -0.03, 0, -1.31134e-09
 mesh = SubResource( 9 )
 material/0 = null
 
-[node name="SpotLight" type="SpotLight" parent="."]
+[node name="RightSpotLight" type="SpotLight" parent="."]
 transform = Transform( 0.250389, -0.19398, 0.948513, -0.0655201, 0.974081, 0.216504, -0.965926, -0.116357, 0.231189, -2.2654, 0.320888, -0.538813 )
 light_energy = 3.0
 light_bake_mode = 0
@@ -211,7 +214,7 @@ shadow_enabled = true
 spot_range = 13.945
 spot_angle = 22.3931
 
-[node name="SpotLight2" type="SpotLight" parent="."]
+[node name="LeftSpotLight" type="SpotLight" parent="."]
 transform = Transform( -0.250389, -0.19398, 0.948513, 0.0655201, 0.974081, 0.216504, -0.965926, 0.116357, -0.231189, -2.26583, 0.321058, 0.539 )
 light_energy = 3.0
 light_bake_mode = 0
@@ -227,5 +230,21 @@ collision_mask = 65536
 [node name="DriverCollisionShape" type="CollisionShape" parent="DriverArea"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 10 )
+
+[node name="RightMeshLight" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21706, 0.324217, -0.560042 )
+cast_shadow = 0
+width = 0.002
+height = 0.12223
+depth = 0.267944
+material = SubResource( 12 )
+
+[node name="LeftMeshLight" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.217, 0.324, 0.56 )
+cast_shadow = 0
+width = 0.002
+height = 0.12223
+depth = 0.267944
+material = SubResource( 12 )
 
 [connection signal="area_entered" from="DriverArea" to="." method="_on_DriverArea_area_entered"]
