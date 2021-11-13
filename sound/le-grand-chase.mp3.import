@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/le-grand-chase.mp3-56f0a3f1bbafb1320928d3e7fce8a093.mp3str"
+
+[deps]
+
+source_file="res://sound/le-grand-chase.mp3"
+dest_files=[ "res://.import/le-grand-chase.mp3-56f0a3f1bbafb1320928d3e7fce8a093.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
