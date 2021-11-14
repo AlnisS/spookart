@@ -23,8 +23,8 @@ var gameover_time = -1.0
 func _physics_process(delta):
 	time += delta
 	
-	if $Music.get_playback_position() > 88.7:
-		$Music.seek(2.65)
+	if $Music.get_playback_position() > 32.25:
+		$Music.seek(3.3)
 	
 	var bounce_progress = (time - bounce_time) / bounce_scale
 	
