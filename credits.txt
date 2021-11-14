@@ -5,8 +5,7 @@ golf ball - https://sketchfab.com/3d-models/golf-ball-5f158949c1084575abf02437f6
 trees - https://sketchfab.com/3d-models/trees-dbd3f20966de4cae9170413b9c6f891d
 trees2 - https://sketchfab.com/3d-models/trees-set-f2f119a4442a4464bd0bd373c17ff284
 
-Le Grand Chase by Kevin MacLeod
-Link: https://incompetech.filmmusic.io/song/4670-le-grand-chase
-License: https://filmmusic.io/standard-license
+https://karlcasey.bandcamp.com/track/into-the-void
+Music: 'Into the Void' by Karl Casey @ White Bat Audio
 
 font - https://fonts.google.com/specimen/EB+Garamond?query=Garamond
