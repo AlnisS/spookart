@@ -33,7 +33,7 @@ font_data = ExtResource( 7 )
 script = ExtResource( 5 )
 
 [node name="GolfCart" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.928298, 0, -0.371838, 0, 1, 0, 0.371838, 0, 0.928298, -2.60467, 0.594811, 2.38208 )
+transform = Transform( 0.926939, 0.0540962, -0.371294, -0.0502174, 0.998536, 0.020115, 0.371838, 0, 0.928298, -2.60467, 0.645201, 2.38208 )
 
 [node name="TargetCamera" type="Camera" parent="GolfCart"]
 transform = Transform( -1.32356e-07, -0.236278, 0.971685, 9.49992e-08, 0.971685, 0.236278, -1, 1.23582e-07, -1.06162e-07, -0.0591539, 1.62384, 0.374998 )
