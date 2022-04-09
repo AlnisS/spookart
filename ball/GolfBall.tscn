@@ -19,6 +19,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="SpatialMaterial" id=2]
+resource_local_to_scene = true
 flags_unshaded = true
 flags_do_not_receive_shadows = true
 flags_disable_ambient_light = true

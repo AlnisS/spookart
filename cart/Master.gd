@@ -3,6 +3,7 @@ extends Spatial
 var golf_ball_scene = preload("res://ball/GolfBall.tscn")
 
 func _ready():
+	$PlayButton.grab_focus()
 	get_tree().paused = true
 
 var time = 0.0
@@ -118,6 +119,7 @@ func _physics_process(delta):
 		score += delta * 100 / (golf_ball.target - golf_ball.transform.origin).length()
 	
 	if gameover:
+		$EndScreen.show()
 		$EndScreen.modulate = Color(1.0, 1.0, 1.0, clamp(time - gameover_time, 0.0, 1.0))
 	
 	if not gameover:
